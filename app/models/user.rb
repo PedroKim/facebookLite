@@ -24,7 +24,7 @@ class User < ApplicationRecord
   validates :email, :session_token, :password_digest, 
             :fname, :lname, :birth_date, :gender, presence: true
   validates :email, :session_token, uniqueness: true
-  validates :password, length: { minimum: 6 }, allow_nil: true
+  validates :password, length: { minimum: 6, message: "Your password must be at least 6 characters long. Please try another." }, allow_nil: true
 
   attr_reader :password
   after_initialize :ensure_session_token
