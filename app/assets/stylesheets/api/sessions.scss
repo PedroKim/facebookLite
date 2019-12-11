@@ -180,11 +180,11 @@ $label_gray: #90949c;
           padding: 7px 20px;
           margin-top: 10px;
           margin-bottom: 10px;
-          background: linear-gradient(#67ae55, #578843);
-          background-color: #69a74e;
-          box-shadow: inset 0 1px 1px #a4e388;
+          background: linear-gradient(#66a04b, #568742);
+          background-color: #66a04b;
+          box-shadow: inset 0 1px 1px #a7e888;
           border: 1px solid;
-          border-color: #3b6e22 #3b6e22 #2c5115;
+          border-color: #3b6e22;
           border-radius: 5px;
           font-size: 19px;
           font-weight: bold;
@@ -192,7 +192,17 @@ $label_gray: #90949c;
           text-shadow: 0 1px 2px rgba(0,0,0,.5);
           color: $white;
           &:hover {
-            background: linear-gradient(#79bc64, #578843);
+            background: linear-gradient(#7bbc65, #588943);
+          }
+          &.demo {
+            background: linear-gradient(#b37d5a, #886843);
+            background-color: #b96f32;
+            box-shadow: inset 0 1px 1px #e3bf88;
+            border: 1px solid;
+            border-color: #6e4a22;
+            &:hover {
+              background: linear-gradient(#bca065, #897343);
+            }
           }
         }
         .input_wrapper {

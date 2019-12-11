@@ -25,7 +25,7 @@ const Splash = ({ createNewUser, login, clearErrors, signupErrors, loginErrors})
               <li><span><i className="material-icons">search</i></span><p><em>Find more</em> of what you're looking for with FacebookLite Search.</p></li>
             </ul>
           </div>
-          <Signup createNewUser={createNewUser} errors={signupErrors} />
+          <Signup createNewUser={createNewUser} login={login} errors={signupErrors} />
         </div>
       </section>
       <footer>

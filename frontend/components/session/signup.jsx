@@ -6,28 +6,39 @@ export default class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fname: "",
-      lname: "",
-      email: "",
-      reEmail: "",
-      password: "",
-      birth_date: "1994/1/1",
-      gender: "",
+      user: {
+        fname: "",
+        lname: "",
+        email: "",
+        reEmail: "",
+        password: "",
+        birth_date: "1994/1/1",
+        gender: "",
+      },
       errors: {},
       selected: "",
       showReEmail: "hide",
       showHelper: ""
     };
+
+    this.refObj = {
+      fname: React.createRef(),
+      lname: React.createRef(),
+      email: React.createRef(),
+      reEmail: React.createRef(),
+      password: React.createRef()
+    }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChildInput = this.handleChildInput.bind(this);
     this.handleCloseHelper = this.handleCloseHelper.bind(this);
+    this.loginDemoUser = this.loginDemoUser.bind(this);
   }
 
   handleInput(type) {
     return e => {
       const {dataset, value} = e.target;
       const newState = this.state;
-      newState[type] = value;
+      newState.user[type] = value;
       if (dataset.vtype === "email") {
         if (validateUtils.isValidEmail(value)){
           newState.showReEmail = "fadeIn";
@@ -42,29 +53,68 @@ export default class Signup extends React.Component {
   }
 
   handleChildInput(type, value) {
-    this.setState({ [type]: value });
+    const newState = this.state;
+    newState.user[type] = value;
+    this.setState(newState);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createNewUser(this.state);
+
+    const { user } = this.state;
+    let valid = true;
+
+    Object.entries(this.refObj).forEach((attr, idx) => {
+      const [field, ref] = attr;
+      const {dataset, value} = ref.current;
+      this.runValidation(dataset.vtype, value, field);
+    });
+
+    const errors = Object.entries(this.state.errors);
+
+    for (let i = 0; i < errors.length; i++) {
+      const [field, error] = errors[i];
+      if (error) {
+        this.refObj[field].current.focus();
+        this.state.selected = field;
+        valid = false;
+        break;
+      }
+    }
+
+    this.setState(this.state);
+
+    if (valid) this.props.createNewUser(this.state.user);
       // .then(() => this.props.history.push('/chirps'));
+  }
+
+  loginDemoUser(e) {
+    e.preventDefault();
+    this.props.login({
+      email: "demo@mail.com", 
+      password: "hunter2"
+    });
   }
 
   handleBlur(field) {
     return e => {
       const {dataset, value} = e.target;
-      let result;
-      if (dataset.vtype === "reEmail") {
-        result = validateUtils[dataset.vtype](value, this.state.email);
-      } else {
-        result = validateUtils[dataset.vtype](value);
-      }
-      const newState = this.state;
-      newState.errors[field] = result.message;
+      const newState = this.runValidation(dataset.vtype, value, field);
       newState.selected = "";
       this.setState(newState);
     }
+  }
+
+  runValidation(vtype, val, field) {
+    let result;
+    if (vtype === "reEmail") {
+      result = validateUtils[vtype](val, this.state.user.email);
+    } else {
+      result = validateUtils[vtype](val);
+    }
+    this.state;
+    this.state.errors[field] = result.message;
+    return this.state;
   }
 
   handleFocus(field) {
@@ -88,7 +138,7 @@ export default class Signup extends React.Component {
   }
 
   errorActive(field) {
-    // console.log(this.state.errors);
+    // console.log(this.state);
     return this.state.errors[field] ? "error" : "";
   }
 
@@ -119,6 +169,7 @@ export default class Signup extends React.Component {
           <span className="name_wrapper">
             <span className={"input_wrapper " + this.errorActive("fname") + " " + this.focusActive("fname")}>
               <input type="text"
+                ref={this.refObj.fname}
                 data-vtype="name"
                 placeholder="First name"
                 value={this.state.fname}
@@ -138,6 +189,7 @@ export default class Signup extends React.Component {
             </span>
             <span className={"input_wrapper " + this.errorActive("lname") + " " + this.focusActive("lname")}>
               <input type="text"
+                ref={this.refObj.lname}
                 data-vtype="name"
                 placeholder="Last name"
                 value={this.state.lname}
@@ -158,6 +210,7 @@ export default class Signup extends React.Component {
           </span>
           <span className={"input_wrapper " + this.errorActive("email") + " " + this.focusActive("email")}>
             <input type="email" 
+              ref={this.refObj.email}
               data-vtype="email"
               placeholder="Email"
               value={this.state.email} 
@@ -177,6 +230,7 @@ export default class Signup extends React.Component {
           </span>
           <span className={"reEmail input_wrapper " + this.errorActive("reEmail") + " " + this.focusActive("reEmail") + " " + this.state.showReEmail}>
             <input type="email"
+              ref={this.refObj.reEmail}
               data-vtype="reEmail"
               placeholder="Re-enter email"
               value={this.state.reEmail}
@@ -196,6 +250,7 @@ export default class Signup extends React.Component {
           </span>
           <span className={"input_wrapper " + this.errorActive("password") + " " + this.focusActive("password")}>
             <input type="password" 
+              ref={this.refObj.password}
               data-vtype="password"
               placeholder="New password"
               value={this.state.password} 
@@ -267,6 +322,7 @@ export default class Signup extends React.Component {
           </span>
           <p className="terms">By clicking Sign Up, you agree to our <a>Terms</a>, <a>Data Policy</a> and <a>Cookies Policy</a>. You may receive SMS Notifications from us and can opt out any time.</p>
           <button className="form_button">Sign Up</button>
+          <button className="form_button demo" onClick={this.loginDemoUser}>Demo User</button>
         </form>
         <hr />
         <p className="create_page"><a>Create a Page</a> for a celebrity, band or business.</p>
