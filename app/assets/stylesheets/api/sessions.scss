@@ -328,6 +328,9 @@ $label_gray: #90949c;
   position: relative;
   .icon_help_wrapper {
     position: relative;
+    padding: 0;
+    border-color: transparent;
+    background-color: transparent;
     cursor: pointer;
     i {
       font-size: 19px;
@@ -337,8 +340,8 @@ $label_gray: #90949c;
   .helper_inner {
     display: none;
     position: absolute;
-    top: -11px;
-    right: 26px;
+    top: -9px;
+    right: 30px;
     width: 305px;
     padding: 15px;
     background-color: $white;
@@ -347,6 +350,10 @@ $label_gray: #90949c;
     border: 1px solid #B1B4B8;
     border-radius: 3px;
     z-index: 1;
+    cursor: default;
+    &.show {
+      display: block;
+    }
     .helper_tooltip_border {
       position: absolute;
       top: 10px;
@@ -364,6 +371,7 @@ $label_gray: #90949c;
         font-size: 12px;
         line-height: 130%;
         // font-weight: lighter;
+        text-align: left;
         b {font-weight: bold;}
       }
       hr {
@@ -372,16 +380,18 @@ $label_gray: #90949c;
       .button_wrapper {
         display: flex;
         justify-content: flex-end;
+        a {
+          display: block;
+          padding: 5px 8px;
+          font-size: 11px;
+          background-color: #3A5999;
+          border-radius: 3px;
+          color: white;
+          &:hover {
+            text-decoration: none;
+          }
+        }
       }
-      button {
-        outline: none;
-        padding: 2px 8px;
-        font-size: 12px;
-        background-color: #3A5999;
-        border-radius: 3px;
-        color: white;
-      }
-
     }
   }
 }

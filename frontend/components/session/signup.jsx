@@ -15,10 +15,12 @@ export default class Signup extends React.Component {
       gender: "",
       errors: {},
       selected: "",
-      showReEmail: "hide"
+      showReEmail: "hide",
+      showHelper: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChildInput = this.handleChildInput.bind(this);
+    this.handleCloseHelper = this.handleCloseHelper.bind(this);
   }
 
   handleInput(type) {
@@ -71,6 +73,20 @@ export default class Signup extends React.Component {
     }
   }
 
+  handleShowHelper(field) {
+    return e => {
+      e.preventDefault();
+      if (this.state.showHelper.length === 0) {
+        this.setState({showHelper: field});
+      }
+    }
+  }
+
+  handleCloseHelper(e) {
+    e.preventDefault();
+    this.setState({showHelper: ""});
+  }
+
   errorActive(field) {
     // console.log(this.state.errors);
     return this.state.errors[field] ? "error" : "";
@@ -78,6 +94,10 @@ export default class Signup extends React.Component {
 
   focusActive(field) {
     return this.state.selected === field ? "focus" : "";
+  }
+
+  helperActive(field) {
+    return this.state.showHelper === field ? "show" : "";
   }
 
   render() {
@@ -196,20 +216,20 @@ export default class Signup extends React.Component {
           <span className="input_wrapper birthdate">
             <BirthDateSelect handleChildInput={this.handleChildInput} />
             <span className="helper_wrapper">
-              <span className="icon_help_wrapper">
+              <button className="icon_help_wrapper" onClick={this.handleShowHelper("birthdate")} onBlur={this.handleCloseHelper}>
                 <i className="material-icons">help</i>
-              </span>
-              <span className="helper_inner">
-                <span className="helper_tooltip_border"></span>
-                <span className="helper_tooltip"></span>
-                <span className="helper_box">
-                  <p className="helper_text"><b>Providing your birthday</b> helps make sure you get the right Facebook experience for your age. If you want to change who sees this, go to the About section of your profile. For more details, please visit our Data Policy.</p>
-                  <hr />
-                  <span className="button_wrapper">
-                    <button>Close</button>
+                <span className={"helper_inner " + this.helperActive("birthdate")}>
+                  <span className="helper_tooltip_border"></span>
+                  <span className="helper_tooltip"></span>
+                  <span className="helper_box">
+                    <p className="helper_text"><b>Providing your birthday</b> helps make sure you get the right Facebook experience for your age. If you want to change who sees this, go to the About section of your profile. For more details, please visit our <a>Data Policy</a>.</p>
+                    <hr />
+                    <span className="button_wrapper">
+                      <a onClick={this.handleCloseHelper}>Close</a>
+                    </span>
                   </span>
                 </span>
-              </span>
+              </button>
             </span>
           </span>
           <span className="gender_wrapper input_wrapper">
@@ -229,9 +249,20 @@ export default class Signup extends React.Component {
             /> Male
             </span>
             <span className="helper_wrapper">
-              <span className="icon_help_wrapper">
+              <button className="icon_help_wrapper" onClick={this.handleShowHelper("gender")} onBlur={this.handleCloseHelper}>
                 <i className="material-icons">help</i>
-              </span>
+                <span className={"helper_inner " + this.helperActive("gender")}>
+                  <span className="helper_tooltip_border"></span>
+                  <span className="helper_tooltip"></span>
+                  <span className="helper_box">
+                    <p className="helper_text">You can change who sees your gender on your profile later. Select Custom to choose another gender, or if you'd rather not say.</p>
+                    <hr />
+                    <span className="button_wrapper">
+                      <a onClick={this.handleCloseHelper}>Close</a>
+                    </span>
+                  </span>
+                </span>
+              </button>
             </span>
           </span>
           <p className="terms">By clicking Sign Up, you agree to our <a>Terms</a>, <a>Data Policy</a> and <a>Cookies Policy</a>. You may receive SMS Notifications from us and can opt out any time.</p>
