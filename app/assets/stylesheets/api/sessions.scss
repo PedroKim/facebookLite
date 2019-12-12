@@ -296,7 +296,7 @@ $label_gray: #90949c;
       margin: 0 auto;
     }
     hr {
-      margin-bottom: 32px;
+      margin-bottom: 15px;
       border-color: rgba(0,0,0,0.1);
       border-width: 0.5px;
     }
@@ -310,6 +310,8 @@ $label_gray: #90949c;
       }
     }
     .copyright {
+      display: inline-block;
+      margin-top: 32px;
       font-size: 11px;
       color: $gray;
     }

@@ -36,6 +36,20 @@ const Splash = ({ createNewUser, login, clearErrors, signupErrors, loginErrors})
             <li><a href="">AngelList</a></li>
           </ul>
           <hr />
+          <ul>
+            <li>Checkout my colleagues' projects:</li>
+            <li><a target="_blank" href="https://g-cord.herokuapp.com/">g-cord</a></li>
+            <li><a target="_blank" href="https://mysticamp.herokuapp.com/">MystiCamp</a></li>
+            <li><a target="_blank" href="https://hoopr.herokuapp.com/">Hoopr</a></li>
+            <li><a target="_blank" href="https://tinnitus-audio.herokuapp.com/">Tinnitus</a></li>
+            <li><a target="_blank" href="https://couch9.herokuapp.com/">Couch9</a></li>
+            <li><a target="_blank" href="http://soundshroud000.herokuapp.com/">SoundShroud</a></li>
+            <li><a target="_blank" href="https://open-playful.herokuapp.com/">OpenPlayful</a></li>
+            <li><a target="_blank" href="https://airgot.herokuapp.com/">AirGoT</a></li>
+            <li><a target="_blank" href="https://tilda-music.herokuapp.com/">Tilda</a></li>
+            <li><a target="_blank" href="https://dopamine-dispenser.herokuapp.com/">Dopamine Dispenser</a></li>
+            <li><a target="_blank" href="https://photo32em.herokuapp.com/">32em</a></li>
+          </ul>
           <span className="copyright">Peter © 2019</span>
         </div>
       </footer>
