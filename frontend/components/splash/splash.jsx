@@ -10,7 +10,7 @@ const Splash = ({ createNewUser, login, clearErrors, signupErrors, loginErrors})
       <header>
         <div className="header_inner">
           <div className="logo_wrapper">
-            <Link to="/" className="logo">facebookLite</Link>
+            <Link to="/" className="logo">fauxbook</Link>
           </div>
           <Signin login={login} clearErrors={clearErrors} errors={loginErrors} />
         </div>
@@ -18,11 +18,11 @@ const Splash = ({ createNewUser, login, clearErrors, signupErrors, loginErrors})
       <section className="signup_outer">
         <div className="signup_inner">
           <div className="intro">
-            <h2>Connect with friends and the world around you on Facebook.</h2>
+            <h2>Connect with friends and the world around you on Fauxbook.</h2>
             <ul>
               <li><span><i className="material-icons">dynamic_feed</i></span><p><em>See photos and updates</em> from friends in News Feed.</p></li>
               <li><span><i className="material-icons">share</i></span><p><em>Share what's new</em> in your life on your Timeline.</p></li>
-              <li><span><i className="material-icons">search</i></span><p><em>Find more</em> of what you're looking for with FacebookLite Search.</p></li>
+              <li><span><i className="material-icons">search</i></span><p><em>Find more</em> of what you're looking for with Fauxbook Search.</p></li>
             </ul>
           </div>
           <Signup createNewUser={createNewUser} login={login} errors={signupErrors} />
