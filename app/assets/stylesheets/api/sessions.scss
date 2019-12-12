@@ -302,16 +302,18 @@ $label_gray: #90949c;
     }
     ul {
       display: flex;
+      flex-wrap: wrap;
       padding-bottom: 5px;
       li {
         margin-right: 22px;
+        margin-bottom: 10px;
         font-size: 12px;
         color: $blue;
       }
     }
     .copyright {
       display: inline-block;
-      margin-top: 32px;
+      margin-top: 22px;
       font-size: 11px;
       color: $gray;
     }
