@@ -310,7 +310,7 @@ export default class Signup extends React.Component {
                   <span className="helper_tooltip_border"></span>
                   <span className="helper_tooltip"></span>
                   <span className="helper_box">
-                    <p className="helper_text">You can change who sees your gender on your profile later. Select Custom to choose another gender, or if you'd rather not say.</p>
+                    <p className="helper_text">You can change who sees your gender on your profile later. </p>
                     <hr />
                     <span className="button_wrapper">
                       <a onClick={this.handleCloseHelper}>Close</a>
@@ -320,12 +320,13 @@ export default class Signup extends React.Component {
               </button>
             </span>
           </span>
-          <p className="terms">By clicking Sign Up, you agree to our <a>Terms</a>, <a>Data Policy</a> and <a>Cookies Policy</a>. You may receive SMS Notifications from us and can opt out any time.</p>
-          <button className="form_button">Sign Up</button>
-          <button className="form_button demo" onClick={this.loginDemoUser}>Demo User</button>
+          <p className="terms">By clicking Sign Up, you are signing up on this clone project. So, do not sign up with sensitive information. Also, you can explore through this website using this <a onClick={this.loginDemoUser}>demo login</a>. Enjoy checking out this fb clone!</p>
+          <div className="button_container">
+            <button className="form_button">Sign Up</button>
+            <button className="form_button demo" onClick={this.loginDemoUser}>Demo User</button>
+          </div>
         </form>
-        <hr />
-        <p className="create_page"><a>Create a Page</a> for a celebrity, band or business.</p>
+        {/* <hr /> */}
       </div>
     );
   }

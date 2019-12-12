@@ -66,12 +66,12 @@ $label_gray: #90949c;
               background-color: #365899;
             }
           }
-          a {
-            display: block;
-            padding-top: 7px;
-            font-weight: lighter;
-            color: $light_blue;
-          }
+          // a {
+          //   display: block;
+          //   padding-top: 7px;
+          //   font-weight: lighter;
+          //   color: $light_blue;
+          // }
         }
       }
     }
@@ -136,22 +136,13 @@ $label_gray: #90949c;
           color: $dark_gray;
         }
         p.terms {
-          width: 316px;
+          // width: 316px;
           margin: 11px 0;
           font-size: 11px;
           color: #777;
           line-height: 130%;
           a {
             color: #385898;
-          }
-        }
-        p.create_page {
-          font-weight: bold;
-          font-size:12px;
-          color: $gray;
-          a {
-            color: $blue;
-            font-size: 12px;
           }
         }
         form {
@@ -279,6 +270,7 @@ $label_gray: #90949c;
           }
         }
         .gender_wrapper {
+          margin-bottom: 20px;
           .radio_wrapper {
             display: inline-block;
             padding: 5px 0 5px 4px;
@@ -289,6 +281,10 @@ $label_gray: #90949c;
               font-size: 12px;
             }
           }
+        }
+        .button_container {
+          display: flex;
+          justify-content: space-between;
         }
       }
     }

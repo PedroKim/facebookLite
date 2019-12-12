@@ -51,7 +51,7 @@ export default class Signin extends React.Component {
             <input type="password"
               value={this.state.password}
               onChange={this.handleInput("password")} />
-            <a>Forgot account?</a>
+            {/* <a>Forgot account?</a> */}
           </span>
           <button>Log In</button>
         </form>
