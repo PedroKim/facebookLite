@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import NavProfileLink from './nav_list_items/nav_profile_link';
-import NavLink from './nav_list_items/nav_link';
 import NavButtons from './nav_list_items/nav_buttons';
 import NavDropdown from './nav_list_items/nav_dropdown';
 
