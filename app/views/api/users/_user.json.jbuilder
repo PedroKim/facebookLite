@@ -1,4 +1,4 @@
-json.extract! user, :id, :email, :bio, :gender, :hometown
+json.extract! user, :id, :email, :bio, :gender, :hometown, :fname, :lname
 json.name user.fname + " " + user.lname
 json.birthDate user.birth_date
 json.phoneNumber user.phone_number

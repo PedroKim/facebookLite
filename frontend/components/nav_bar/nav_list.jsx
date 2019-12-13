@@ -14,7 +14,8 @@ const NavList = ({user, logout}) => {
     <ul className="nav_list">
       <li>
         <Link to={"/users/" + user.id} title="Profile" className="nav_reg_link">
-          <span className="profile_image_small"></span><span className="link_text">Veso</span>
+          <span className="profile_image_small"></span>
+          <span className="link_text">{user.fname}</span>
         </Link>
         </li>
       <li><Link to="/" className="nav_reg_link"><span className="link_text">Home</span></Link></li>
