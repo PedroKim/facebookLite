@@ -45,9 +45,11 @@ const Splash = ({ createNewUser, login, clearErrors, signupErrors, loginErrors})
             <li><a target="_blank" href="https://couch9.herokuapp.com/">Couch9</a></li>
             <li><a target="_blank" href="http://soundshroud000.herokuapp.com/">SoundShroud</a></li>
             <li><a target="_blank" href="https://open-playful.herokuapp.com/">OpenPlayful</a></li>
+            <li><a target="_blank" href="https://superflix-aa.herokuapp.com/">Superflix</a></li>
             <li><a target="_blank" href="https://airgot.herokuapp.com/">AirGoT</a></li>
             <li><a target="_blank" href="https://tilda-music.herokuapp.com/">Tilda</a></li>
             <li><a target="_blank" href="https://dopamine-dispenser.herokuapp.com/">Dopamine Dispenser</a></li>
+            <li><a target="_blank" href="https://flea.herokuapp.com/">flea</a></li>
             <li><a target="_blank" href="https://photo32em.herokuapp.com/">32em</a></li>
           </ul>
           <span className="copyright">Peter © 2019</span>
