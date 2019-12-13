@@ -15,7 +15,7 @@ export default class NavButtons extends React.Component {
   onBtnHover(type) {
     return e => {
       if (this.hoverTimer) clearTimeout(this.hoverTimer);
-      this.hoverTimer = setTimeout(() => this.setState({btnHovered: type}), 1000);
+      this.hoverTimer = setTimeout(() => this.setState({btnHovered: type}), 600);
     }
   }
 
