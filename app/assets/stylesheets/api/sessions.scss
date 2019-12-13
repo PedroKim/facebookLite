@@ -1,16 +1,8 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$blue: #3b5998;
-$light_blue: #9cb4d8;
-$lighter_blue: #EEF0F5;
-$dark_blue: #4267b2;
-$darker_blue: #29487d;
-$darkest_blue: #1d2a5b;
-$white: #fff;
-$gray: #666;
-$dark_gray: #333;
-$label_gray: #90949c;
+@import '../colors';
+@import '../utils';
 
 .splash_main {
   font-family: Helvetica, Arial, sans-serif;
@@ -291,6 +283,7 @@ $label_gray: #90949c;
   footer {
     padding-top: 32px;
     padding-bottom: 20px;
+    background-color: $white;
     .footer_inner {
       width: 980px;
       margin: 0 auto;
@@ -318,11 +311,6 @@ $label_gray: #90949c;
       color: $gray;
     }
   }
-}
-
-@mixin tooltip($dir, $weight, $color) {
-  border: $weight solid transparent;
-  border-#{$dir}: $weight solid $color;
 }
 
 .signup_form {

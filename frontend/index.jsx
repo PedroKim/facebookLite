@@ -8,15 +8,18 @@ import { postSession } from "./utils/session";
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   let preloadedState = undefined;
-
   if (window.currentUser) {
     preloadedState = {
+      entities: {
+        users: {[window.currentUser.id]: window.currentUser}
+      },
       session: {
-        currentUser: window.currentUser
+        currentUser: window.currentUser.id
       }
     };
-    delete window.currentUser
+    delete window.currentUser;
   }
+
   const store = configureStore(preloadedState);
   
   window.getState = store.getState;
@@ -24,8 +27,4 @@ document.addEventListener('DOMContentLoaded', () => {
   window.postSession = postSession;
 
   ReactDOM.render(<Root store={store} />, root);
-
-
-  
-
 });

@@ -1,18 +1,16 @@
 import { connect } from 'react-redux';
 import { fetchUser } from '../../actions/users_action';
 import { logout } from '../../actions/session';
-import Home from './home';
+import Main from './main';
 
-const msp = ({users, session}) => {
+const msp = ({entities, session}) => {
   return {
-    currentUser: session.currentUser,
-    users
+    currentUser: entities.users[session.currentUser]
   }
 };
 
 const mdp = dispatch => ({
-  fetchUser: userId => dispatch(fetchUser(userId)),
   logout: () => dispatch(logout())
 });
 
-export default connect(msp, mdp)(Home);
+export default connect(msp, mdp)(Main);

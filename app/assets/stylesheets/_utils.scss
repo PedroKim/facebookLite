@@ -1,0 +1,4 @@
+@mixin tooltip($dir, $weight, $color) {
+  border: $weight solid transparent;
+  border-#{$dir}: $weight solid $color;
+}
