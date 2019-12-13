@@ -76,7 +76,7 @@
   display: flex;
   >li {
     &:first-child{
-      a {
+      a.nav_reg_link {
         padding-left: 0;
       }
     }
