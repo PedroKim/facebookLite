@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { fetchUser } from '../../actions/users_action';
 import Profiles from './profiles';
 
 const msp = ({entities}, ownProps) => {
@@ -7,7 +8,7 @@ const msp = ({entities}, ownProps) => {
 };
 
 const mdp = dispatch => ({
-
+  fetchUser: userId => dispatch(fetchUser(userId))
 });
 
 

@@ -8,7 +8,6 @@ export default class ProfileBanner extends React.Component {
   }
 
   render() {
-    debugger;
     const { user } = this.props;
     const coverImgClass = user.coverImg ? "has_image" : "";
     const profileImg = user.profileImg ? (<img src={user.profileImg} />) : null;
