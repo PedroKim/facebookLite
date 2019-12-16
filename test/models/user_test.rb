@@ -16,8 +16,6 @@
 #  current_city    :string
 #  hometown        :string
 #  bio             :text
-#  profile_img_url :string
-#  cover_img_url   :string
 #
 
 require 'test_helper'

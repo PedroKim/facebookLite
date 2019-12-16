@@ -8,6 +8,7 @@
   padding: 8px 0;
   background-color: #4167B2;
   font-family: Helvetica, Arial, sans-serif;
+  z-index: 1;
   nav {
     display: flex;
     justify-content: space-between;
@@ -118,6 +119,10 @@
     border: 1px solid #BCBFC5;
     border-radius: 50%;
     background-color: #D0D3D8;
+    overflow: hidden;
+    img {
+      width: 24px;
+    }
   }
 }
 li.nav_buttons {

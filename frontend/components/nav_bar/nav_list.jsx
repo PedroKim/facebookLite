@@ -8,11 +8,14 @@ const NavList = ({user, logout}) => {
   function handleLogout() {
     logout();
   }
+
+  const userImg = user.profileImg ? (<img src={user.profileImg} />) : null;
+
   return (
     <ul className="nav_list">
       <li>
         <Link to={"/users/" + user.id} title="Profile" className="nav_reg_link">
-          <span className="profile_image_small"></span>
+          <span className="profile_image_small">{userImg}</span>
           <span className="link_text">{user.fname}</span>
         </Link>
         </li>

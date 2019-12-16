@@ -16,8 +16,6 @@
 #  current_city    :string
 #  hometown        :string
 #  bio             :text
-#  profile_img_url :string
-#  cover_img_url   :string
 #
 
 class User < ApplicationRecord
@@ -28,6 +26,9 @@ class User < ApplicationRecord
 
   attr_reader :password
   after_initialize :ensure_session_token
+
+  has_one_attached :profile_img
+  has_one_attached :cover_img  
   
   def self.generate_session_token
     SecureRandom.urlsafe_base64

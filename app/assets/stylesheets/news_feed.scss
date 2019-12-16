@@ -1,0 +1,14 @@
+.news_feed {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  h1 {
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    font-size: 36px;
+    font-family: Helvetica;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  }
+}

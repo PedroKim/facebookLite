@@ -1,0 +1,108 @@
+@import 'colors';
+@import 'utils';
+
+.profiles {
+  // display: flex;
+  // align-items: center;
+  height: 100%;
+  width: 981px;
+  margin: 43px auto 0;
+  font-family: Helvetica, Arial, sans-serif;
+  // h1 {
+  //   width: 700px;
+  //   margin: 0 auto;
+  //   text-align: center;
+  //   color: #fff;
+  //   font-size: 36px;
+  //   font-family: Helvetica;
+  //   text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  // }
+}
+
+.pb_wrapper {
+  position: relative;
+  width: 852px;
+  border: 1px solid #D4D6DB;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-sizing: border-box;
+  overflow: hidden;
+  .pb_cover {
+    position:relative;
+    height: 250px;
+    background-color: #1C1E21;
+  }
+  .pb_name_wrapper {
+    position: absolute;
+    bottom: 12px;
+    left: 202px;
+    a {
+      color: white;
+      &:hover {
+        text-decoration: none;
+      }
+      h1 {
+        font-size: 22px;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+      }
+    }
+  }
+}
+
+.pb_nav_wrapper {
+  height: 43px;
+  background-color: $white;
+  nav.pb_nav {
+    ul {
+      display: flex;
+      width: 311px;
+      margin-left: 202px;
+      border-right: 1px solid #E9EAEE;
+      border-left: 1px solid #E9EAEE;
+
+      li {
+        &:last-child a {
+          border-right: none;
+        }
+        a {
+          display: flex;
+          align-items: center;
+          height: 43px;
+          padding: 0 14px;
+          border-right: 1px solid #E9EAEE;
+          font-size: 14px;
+          font-weight: bold;
+          color: #375898;
+          &:hover {
+            background-color: #F5F6F7;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.pb_profile_frame{
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  width: 160px;
+  height: 160px;
+  padding: 4px;
+  background-color: $white;
+  border: 1px solid #D9D9D9;
+  border-radius: 50%;
+  .pb_profile_img_wrapper {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 1px solid #BCBFC5;
+    background-color: #D0D3D8;
+    box-sizing: border-box;
+    overflow: hidden;
+    img {
+      width:160px;
+    }
+  }
+}
