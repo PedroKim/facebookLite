@@ -11,3 +11,7 @@ const receiveUser = user => ({
 export const fetchUser = userId => dispatch => (
   userUtils.fetchUser(userId).then(user => dispatch(receiveUser(user)))
 );
+
+export const updateUser = userData => dispatch => (
+  userUtils.updateUser(userData).then(user => dispatch(receiveUser(user)))
+);

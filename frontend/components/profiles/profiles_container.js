@@ -1,14 +1,18 @@
 import { connect } from 'react-redux';
-import { fetchUser } from '../../actions/users_action';
+import { fetchUser, updateUser } from '../../actions/users_action';
 import Profiles from './profiles';
 
-const msp = ({entities}, ownProps) => {
+const msp = ({entities, session}, ownProps) => {
   const user = entities.users[ownProps.match.params.user_id];
-  return { user };
+  return { 
+    self: user && user.id === session.currentUser,
+    user 
+  };
 };
 
 const mdp = dispatch => ({
-  fetchUser: userId => dispatch(fetchUser(userId))
+  fetchUser: userId => dispatch(fetchUser(userId)),
+  updateUser: userData => dispatch(updateUser(userData))
 });
 
 

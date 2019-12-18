@@ -1,0 +1,213 @@
+@import 'colors';
+@import 'utils';
+
+.about_container {
+  margin-top: 15px;
+  border: 1px solid #D4D6DB;
+  border-radius: 3px;
+  background-color: $white;
+}
+
+.about_header {
+  padding: 15px;
+  background-color: #F5F6F7;
+  border-bottom: 1px solid #D4D6DB;
+  a {
+    display: flex;
+    align-items: center;
+  }
+  h2 {
+    display: inline;
+    margin-left: 5px;
+    font-weight: bold;
+    color: #51545A;
+  }
+  i {
+    color: #ADB3BB;
+  }
+}
+.about_body {
+  display: flex;
+}
+
+.about_sidebar {
+  width: 245px;
+  padding: 8px 0;
+  border-right: 1px solid #D4D6DB;
+  box-sizing: border-box;
+  ul {
+    li {
+      &.active {
+        a {
+          font-weight: bold;
+          color: #000;
+          border-left: 3px solid #3A5998;
+        }
+      }
+      a {
+        display: inline-block;
+        padding: 5px 15px;
+        margin: 8px 0;
+        border-left: 3px solid transparent;
+        font-size: 14px;
+        color: #9498a0;
+        &:hover {
+          text-decoration: none;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+.about_viewport {
+  width: 605px;
+  padding: 30px 0;
+  // padding: 30px 25px;
+  box-sizing: border-box;
+  p.av_header {
+    margin: 0 25px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #DDDFE2;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #90949C;
+  }
+  ul {
+    margin-bottom: 35px;
+    &.av_overview {
+      width: 330px;
+      padding-left: 25px;
+      li {
+        padding: 22px 0 36px 0;
+        border-bottom: 1px solid #EBEDF0;
+        cursor: pointer;
+      }
+    }
+    &.av_places {
+      .btn_av_add {
+        padding: 12px 0;
+        margin: 0 25px;
+        border-bottom: 1px solid #EBEDF0;
+        cursor: pointer;
+      }
+      .av_places_town {
+        .btn_av_add {
+          border-bottom: 0;
+        }
+      }
+      li {
+        &.active {
+          .btn_av_add {
+            display: none;
+          }
+          .av_edit_form {
+            display: block;
+          }
+        }
+        .btn_av_add {
+          display: flex;
+        }
+        .av_edit_form {
+          display: none;
+        }
+      }
+    }
+    li {
+      color: #3478E6;
+      &:first-child {
+        padding-top: 0;
+      }
+      &:last-child {
+        padding-bottom: 6px;
+        border-bottom: none;
+      }
+      &.av_contact_number {
+        .btn_av_add {
+          border-bottom: 0;
+        }
+      }
+      &.av_basic_gender {
+        .data_value {
+          text-transform: capitalize;
+        }
+      }
+      .av_edit_form {
+        form {
+          margin-top: -1px;
+          padding: 15px 25px;
+          background-color: #F5F6F7;
+          border-top: 1px solid #E8EBEE;
+          border-bottom: 1px solid #E8EBEE;
+          .av_field_wrapper {
+            label {
+              display: inline-block;
+              width: 175px;
+              font-size: 14px;
+              vertical-align: top;
+              text-align: right;
+              color: #606770;
+            }
+            input {
+              padding: 4px 5px;
+              margin-left: 20px;
+              width: 245px;
+              box-sizing: border-box;
+              font-size: 14px;
+            }
+          }
+          hr {
+            margin: 15px 0;
+            border-top: 0;
+            border-color: #DDDFE2;
+          }
+          .btn_wrapper {
+            margin-left: 195px;
+            button {
+              margin-right: 5px;
+              padding: 7px;
+              border-radius: 2px;
+              font-weight: bold;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .btn_av_add {
+        display: flex;
+        align-items: center;
+      }
+      .icn_wrapper {
+        display: flex;
+        align-items: center;
+        width: 36px;
+        height: 36px;
+        margin-right: 14px;
+        border:1px dashed #3478E6;
+        box-sizing: border-box;
+        .icn_add {
+          width: 100%;
+          font-size: 20px;
+          text-align: center;
+        }
+      }
+      .av_data_wrapper {
+        display: flex;
+        padding: 18px 0;
+        margin: 0 25px;
+        border-bottom: 1px solid #EBEDF0;
+        font-size: 15px;
+        .data_key {
+          width: 200px;
+          color: #AFB2B8;
+        }
+        .data_value {
+          width: 355px;
+          color: #393D3F;
+          
+        }
+      }
+    }
+  }
+}
