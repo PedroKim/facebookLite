@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { updateUser } from '../../actions/users_action';
 import About from './about';
 
 const msp = ({ entities, session }, ownProps) => {
@@ -10,7 +11,7 @@ const msp = ({ entities, session }, ownProps) => {
 };
 
 const mdp = dispatch => ({
-
+  updateUser: userData => dispatch(updateUser(userData))
 });
 
 export default connect(msp, mdp)(About);

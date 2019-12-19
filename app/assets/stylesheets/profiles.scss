@@ -79,6 +79,9 @@
 .pb_cover {
   &:hover {
     .btn_add_cover_img {
+      &.update {
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      }
       .btn_text {
         opacity: 1;
       }
@@ -100,6 +103,11 @@
     position: absolute;
     top: 18px;
     left: 20px;
+    &.update {
+      .btn_text {
+        background-color: rgba(0,0,0,0.6);
+      }
+    }
     .banner_icn_wrapper {
       position: absolute;
       left: 8px;
@@ -175,6 +183,11 @@
   background-color: $white;
   border: 1px solid #D9D9D9;
   border-radius: 50%;
+  &:hover {
+    .pb_profile_img_wrapper .btn_add_profile_img.update {
+      display: flex;
+    }
+  }
   .pb_profile_img_wrapper {
     position: relative;
     width: 160px;
@@ -198,6 +211,9 @@
       background-color: rgba(0, 0, 0, 0.5);
       &:hover {
         background-color: rgba(0, 0, 0, 0.9);
+      }
+      &.update {
+        display: none;
       }
       .btn_api_inner {
         width: 100%;

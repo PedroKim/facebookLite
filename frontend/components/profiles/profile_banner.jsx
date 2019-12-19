@@ -138,7 +138,7 @@ export default class ProfileBanner extends React.Component {
 
     const btn_add_cover_img = self ?
       (
-        <button className="btn_add_cover_img wt" onClick={this.updateImage("coverImgFileRef")}>
+        <button className={"btn_add_cover_img wt " + (coverImg.imgUrl ? "update" : "") } onClick={this.updateImage("coverImgFileRef")}>
           <span className="banner_icn_wrapper"><i className="material-icons">photo_camera</i></span>
           {coverImg.imgUrl ? 
             (<span className="btn_text">Update Cover Photo</span>)
@@ -158,7 +158,7 @@ export default class ProfileBanner extends React.Component {
       ( self ? (
         <>
           <img src={profileImg.imgUrl} />
-          <button className="btn_add_profile_img wt" onClick={this.updateImage("profileImgFileRef")}>
+          <button className={"btn_add_profile_img wt " + (profileImg.imgUrl ? "update" : "")} onClick={this.updateImage("profileImgFileRef")}>
             <span className="btn_api_inner">
               <span className="banner_icn_wrapper"><i className="material-icons">photo_camera</i></span>
               <span className="btn_text">Update Photo</span>
