@@ -11,7 +11,7 @@ const Splash = ({ createNewUser, login, clearErrors, signupErrors, loginErrors})
       <header>
         <div className="header_inner">
           <div className="logo_wrapper">
-            <Link to="/" className="logo">fauxbook</Link>
+            <Link to="/splash" className="logo">fauxbook</Link>
           </div>
           <Signin login={login} clearErrors={clearErrors} errors={loginErrors} />
         </div>
