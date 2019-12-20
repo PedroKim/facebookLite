@@ -20,16 +20,16 @@
   // }
   .profiles_inner {
     width: 852px;
-    border: 1px solid #D4D6DB;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    box-sizing: border-box;
   }
 }
 
 .pb_wrapper {
   position: relative;
   width: 100%;
+  border: 1px solid #D4D6DB;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-sizing: border-box;
   // overflow: hidden;
   &.updating {
     .pb_cover {
