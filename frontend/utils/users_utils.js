@@ -14,3 +14,27 @@ export const updateUser = userData => (
     processData: false
   })
 );
+
+export const makeFriendRequest = friendRequest => (
+  $.ajax({
+    method: "POST",
+    url: "/api/friends",
+    data: {friend: friendRequest}
+  })
+);
+
+export const deleteFriendRequest = friendRequest => (
+  $.ajax({
+    method: "DELETE",
+    url: "/api/friends",
+    data: {friend: friendRequest}
+  })
+);
+
+export const approveFriendRequest = friendRequest => (
+  $.ajax({
+    method: "PATCH",
+    url: "/api/friends",
+    data: {friend: friendRequest}
+  })
+);

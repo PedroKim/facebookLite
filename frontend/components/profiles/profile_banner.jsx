@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export default class ProfileBanner extends React.Component {
   constructor(props) {
@@ -21,6 +21,10 @@ export default class ProfileBanner extends React.Component {
 
     this.coverImgFileRef = React.createRef();
     this.profileImgFileRef = React.createRef();
+    this.handleAddFriend = this.handleAddFriend.bind(this);
+    this.handleDeleteFriendRequest = this.handleDeleteFriendRequest.bind(this);
+    this.handleDeleteReceivedRequest = this.handleDeleteReceivedRequest.bind(this);
+    this.handleConfirmFriendRequest = this.handleConfirmFriendRequest.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -60,17 +64,16 @@ export default class ProfileBanner extends React.Component {
 
         this.setState(newState);
 
-        setTimeout(() => {
-          console.log(this.state);
-        }, 0);
+        // setTimeout(() => {
+        //   console.log(this.state);
+        // }, 0);
 
       }
       if (file) {
-        console.log(reader.readAsDataURL(file));
+        reader.readAsDataURL(file)
       } else {
         this.setState({[type]: {imgUrl: user[type], imgFile: ""}});
       }
-      console.log(type);
     }
   }
   
@@ -118,9 +121,9 @@ export default class ProfileBanner extends React.Component {
             updateState: ""
           });
           this.allowSubmit = true;
-          setTimeout(() => {
-            console.log(this.state);
-          }, 0);
+          // setTimeout(() => {
+          //   console.log(this.state);
+          // }, 0);
         });
 
       }
@@ -131,8 +134,63 @@ export default class ProfileBanner extends React.Component {
     return this.state.updateState === "coverImg" ? "updating" : "";
   }
 
+  handleClickEdit(e) {
+    e.preventDefault();
+    // console.log(e);
+    // debugger;
+    const {user} = this.props;
+    const newHash = `/#/users/${user.id}/about`;
+    if (window.location.hash !== newHash){
+      window.location.href = newHash;
+    }
+  }
+
+  handleAddFriend(e) {
+    e.preventDefault();
+    const { user, currentUserId, makeFriendRequest } = this.props;
+    const friendRequest = {
+      requester_id: currentUserId,
+      requestee_id: user.id,
+      request_status: false
+    };
+    makeFriendRequest(friendRequest);
+  }
+
+  handleDeleteFriendRequest() {
+    const { user, currentUserId, deleteFriendRequest } = this.props;
+    const friendRequest = {
+      requester_id: currentUserId,
+      requestee_id: user.id,
+      request_status: false
+    };
+
+    deleteFriendRequest(friendRequest);
+  }
+
+  handleDeleteReceivedRequest() {
+    const { user, currentUserId, deleteFriendRequest } = this.props;
+    const friendRequest = {
+      requester_id: user.id,
+      requestee_id: currentUserId,
+      request_status: false
+    };
+
+    deleteFriendRequest(friendRequest);
+  }
+  
+  handleConfirmFriendRequest() {
+    const { user, currentUserId, approveFriendRequest } = this.props;
+    const friendRequest = {
+      requester_id: user.id,
+      requestee_id: currentUserId,
+      request_status: true
+    };
+
+    approveFriendRequest(friendRequest);
+  }
+
   render() {
-    const { user, self } = this.props;
+    const { user, self, currentUserId } = this.props;
     const { coverImg, profileImg, updateState } = this.state;
     const coverImgClass = coverImg.imageUrl ? "has_image" : "";
 
@@ -146,6 +204,86 @@ export default class ProfileBanner extends React.Component {
           }
         </button>
       ) : null;
+
+    const btn_edit_or_friend = self ?
+      (
+        <button className="btn_regular btn_on_cover btn_edit_profile" onClick={this.handleClickEdit.bind(this)}>
+          <span className="btn_icn_wrapper"><i className="material-icons">create</i></span>
+          <span className="btn_text">Edit Profile</span>
+        </button>
+      ) : (user.sentRequestIds.includes(currentUserId) ? (
+          <button className="btn_regular btn_on_cover btn_fr btn_fr_respond">
+            <div className="btn_inner">
+              <span className="btn_icn_wrapper"><i className="material-icons">person_add</i></span>
+              <span className="btn_text">Respond to Friend Request</span>
+              <div className="dd_wrapper">
+                <span className="tt_wrapper">
+                  <span className="tt_inner">
+                    <span className="tooltip_border"></span>
+                    <span className="tooltip"></span>
+                  </span>
+                </span>
+                <div className="dd_inner" onClick={this.handleConfirmFriendRequest}>
+                  <span className="dd_text">Confirm</span>
+                </div>
+                <div className="dd_inner" onClick={this.handleDeleteReceivedRequest}>
+                  <span className="dd_text">Delete Request</span>
+                </div>
+              </div>
+            </div>
+          </button>
+        ): (user.receivedRequestIds.includes(currentUserId) ? (
+            <button className="btn_regular btn_on_cover btn_fr btn_fr_update">
+              <div className="btn_inner">
+                <span className="btn_icn_wrapper"><i className="material-icons">person_add</i></span>
+                <span className="btn_text">Friend Request Sent</span>
+                <div className="dd_wrapper">
+                  <span className="tt_wrapper">
+                    <span className="tt_inner">
+                      <span className="tooltip_border"></span>
+                      <span className="tooltip"></span>
+                    </span>
+                  </span>
+                  <div className="dd_inner" onClick={this.handleDeleteFriendRequest}>
+                    <span className="dd_text">Cancel Request</span>
+                  </div>
+                </div>
+              </div>
+            </button>
+          ) : (user.friendIds.includes(currentUserId) ? (
+              <button
+                className="btn_regular btn_on_cover btn_fr btn_fr_add"
+              >
+                <div className="btn_inner">
+                  <span className="btn_icn_wrapper"><i className="material-icons">person_add</i></span>
+                  <span className="btn_text">We are buddies :)</span>
+                  <div className="dd_wrapper">
+                    <span className="tt_wrapper">
+                      <span className="tt_inner">
+                        <span className="tooltip_border"></span>
+                        <span className="tooltip"></span>
+                      </span>
+                    </span>
+                    <div className="dd_inner" onClick={this.handleDeleteFriendRequest}>
+                      <span className="dd_text">Delete Friend</span>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            ) : (
+              <button 
+                className="btn_regular btn_on_cover btn_fr btn_fr_add"
+                onClick={this.handleAddFriend}
+              >
+                <div className="btn_inner">
+                  <span className="btn_icn_wrapper"><i className="material-icons">person_add</i></span>
+                  <span className="btn_text">Add Friend</span>
+                </div>
+              </button>
+            )
+          )
+        )
+      );
 
     const coverImgEl = coverImg.imgUrl ?
       (<div className="pb_cover_img_wrapper" style={{backgroundImage: 'url(' + coverImg.imgUrl + ')'}}>
@@ -218,6 +356,7 @@ export default class ProfileBanner extends React.Component {
           {btn_add_cover_img}
         </div>
         <div className="pb_nav_wrapper">
+          {btn_edit_or_friend}
           {navEl}
         </div>
         <div className="pb_profile_frame">

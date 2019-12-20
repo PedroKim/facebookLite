@@ -29,6 +29,16 @@ class User < ApplicationRecord
 
   has_one_attached :profile_img
   has_one_attached :cover_img  
+
+  has_many :sent_requests,
+    primary_key: :id,
+    foreign_key: :requester_id,
+    class_name: :Friend
+
+  has_many :received_requests,
+    primary_key: :id,
+    foreign_key: :requestee_id,
+    class_name: :Friend
   
   def self.generate_session_token
     SecureRandom.urlsafe_base64
@@ -58,5 +68,56 @@ class User < ApplicationRecord
     self.session_token = User.generate_session_token
     self.save
     self.session_token
+  end
+
+  def pending_received_requests
+    self.received_requests.where(request_status: false).order(:created_at)
+    # .order(created_at: :desc) # ordered opposite way
+  end
+
+  def pending_received_request_ids
+    self.pending_received_requests.pluck(:requester_id)
+  end
+
+  def pending_sent_requests
+    self.sent_requests.where(request_status: false).order(:created_at)
+  end
+
+  def pending_sent_request_ids
+    self.pending_sent_requests.pluck(:requestee_id)
+  end
+
+  def friends
+    friends = Friend.where(requester_id: self.id, request_status: true)
+      .or(Friend.where(requestee_id: self.id, request_status: true))
+      .distinct
+    User.fetch_users(friends, self)
+  end
+
+  def friend_ids
+    self.friends.pluck(:id)
+  end
+
+  def pending_friends
+    friends = Friend.where(requester_id: self.id, request_status: false)
+      .or(Friend.where(requestee_id: self.id, request_status: false))
+      .distinct
+    User.fetch_users(friends, self)
+  end
+
+  def pending_friend_ids
+    self.pending_friends.pluck(:id)
+  end
+  
+  def self.fetch_users(friends, user)
+    user_ids = []
+    friends.each do |friend|
+      if friend.requester_id == user.id
+        user_ids.push(friend.requestee_id)
+      else
+        user_ids.push(friend.requester_id)
+      end
+    end
+    User.where(id: user_ids)
   end
 end

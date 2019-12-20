@@ -13,3 +13,6 @@ if user.cover_img.attached?
 else
   json.coverImg nil
 end
+json.receivedRequestIds user.pending_received_request_ids
+json.sentRequestIds user.pending_sent_request_ids
+json.friendIds user.friend_ids

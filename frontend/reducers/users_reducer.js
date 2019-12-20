@@ -1,5 +1,5 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session';
-import { RECEIVE_USER } from '../actions/users_action';
+import { RECEIVE_USER, RECEIVE_USERS } from '../actions/users_action';
 
 export default (state = {}, action) => {
   let newState;
@@ -11,6 +11,8 @@ export default (state = {}, action) => {
       newState = Object.assign({}, state);
       newState[action.user.id] = action.user;
       return newState;
+    case RECEIVE_USERS:
+      return Object.assign({}, state, action.users);
     default:
       return state;
   }
